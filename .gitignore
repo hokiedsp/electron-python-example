@@ -1,6 +1,8 @@
 api.spec
-.venv/
+venv/
 node_modules/
 build/
 dist/
-pycalcdist/
+package-lock.json
+pretty-calculator*/
+.vscode/
