@@ -8,7 +8,7 @@ const path = require('path')
  * py process
  *************************************************************/
 
-const PY_DIST_FOLDER = 'pycalcdist'
+const PY_DIST_FOLDER = 'dist'
 const PY_FOLDER = 'pycalc'
 const PY_MODULE = 'api' // without .py suffix
 
@@ -68,7 +68,10 @@ app.on('will-quit', exitPyProc)
 let mainWindow = null
 
 const createWindow = () => {
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }})
   mainWindow.loadURL(require('url').format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',

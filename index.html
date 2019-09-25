@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello Calculator!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
   </head>
   <body>
     <h1>Hello Calculator!</h1>
-    <p> We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.</p>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
     <p>Input something like <code>1 + 1</code>.</p>
     <p>This calculator supports <code>+-*/^()</code>, 
     whitespaces, and integers and floating numbers.</p>
@@ -16,7 +17,5 @@
     <div id="result"></div>
   </body>
 
-  <script>
-    require('./renderer.js')
-  </script>
+  <script src="./renderer.js"></script>
 </html>

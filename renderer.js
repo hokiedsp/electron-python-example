@@ -1,9 +1,6 @@
-const zerorpc = require("zerorpc")
-let client = new zerorpc.Client()
+window.zerorpcClient.connect("tcp://127.0.0.1:4242")
 
-client.connect("tcp://127.0.0.1:4242")
-
-client.invoke("echo", "server ready", (error, res) => {
+window.zerorpcClient.invoke("echo", "server ready", (error, res) => {
   if(error || res !== 'server ready') {
     console.error(error)
   } else {
@@ -15,7 +12,7 @@ let formula = document.querySelector('#formula')
 let result = document.querySelector('#result')
 
 formula.addEventListener('input', () => {
-  client.invoke("calc", formula.value, (error, res) => {
+  window.zerorpcClient.invoke("calc", formula.value, (error, res) => {
     if(error) {
       console.error(error)
     } else {
